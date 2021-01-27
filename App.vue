@@ -6,13 +6,17 @@
       :on-press="onPressLearnMore"
       title="Learn More"
       color="#841584"
+      :style="{margin:10}"
       accessibility-label="Learn more about the app by clicking this purple button"
     />
+  <image/>
   </view>
 </template>
 
 <script>
+import image from "./image"
 export default {
+  components: { image },
   data() {
     return {
       message: "Hello World",
@@ -40,8 +44,5 @@ export default {
 .text-color-primary {
   color: rgb(30, 41, 38);
   font-size: 30;
-}
-.learnMore {
-  margin: 5px;
 }
 </style>
