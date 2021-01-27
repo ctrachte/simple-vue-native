@@ -1,8 +1,13 @@
 <template>
   <view class="container">
     <text class="text-color-primary">{{ message }}</text>
-    <button title="Press me!" @press="exclaim" />
-    <button class="alert" v-bind:title="message" v-bind:on-press="handleBtnPress"/>
+    <button
+      class="learnMore"
+      :on-press="onPressLearnMore"
+      title="Learn More"
+      color="#841584"
+      accessibility-label="Learn more about the app by clicking this purple button"
+    />
   </view>
 </template>
 
@@ -10,16 +15,16 @@
 export default {
   data() {
     return {
-      message: "Hello World"
+      message: "Hello World",
     };
   },
   methods: {
     exclaim() {
       this.message += "!";
     },
-    handleBtnPress: function() {
-      alert('Btn Press');
-    }
+    onPressLearnMore: function () {
+      alert("Learn More!");
+    },
   },
 };
 </script>
@@ -27,15 +32,16 @@ export default {
 <style>
 .container {
   flex: 1;
-  background-color: white;
+  background-color: rgb(185, 143, 190);
+  color: rgb(30, 41, 38);
   align-items: center;
   justify-content: center;
 }
 .text-color-primary {
-  color: blue;
+  color: rgb(30, 41, 38);
   font-size: 30;
 }
-button {
-  margin:10%;
+.learnMore {
+  margin: 5px;
 }
 </style>
