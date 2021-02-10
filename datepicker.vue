@@ -1,14 +1,22 @@
 <template>
-  <view class="date-picker-container"> </view>
+  <view class="date-picker-container">
+    <button
+      class="create-date-picker"
+      :on-press="Datepicker"
+      title="Create Datepicker"
+      color="#841584"
+      :style="{margin:10}"
+      accessibility-label="Create a datepicker to choose your start and end dates."
+    />
+  </view>
 </template>
 <script>
 export default {
-  components: { image },
   data() {
       return {
         options:
         {
-            containerElement: document.querySelector('.DatepickerContainer'),
+            containerElement: document.querySelector('.date-picker-container'),
             presetMenu: true,
             singleDate: false,
             autoClose: false,
@@ -147,7 +155,7 @@ export default {
                     let monthText = document.createTextNode(this.moment._locale._months[this.moment.month()] + " - " + this.moment.format("YYYY"));
                     // hamburger menu icon
                     this.menuIconContainer = document.createElement('div');
-                    this.menuIconContainer.setAttribute('style', 'grid-column-start: 1; grid-column-end: 2; background-color: transparent !important;');
+                    this.menuIconContainer.setAttribute('style', 'grid-column-start: 1; grid-column-end: 2; background-color: transparent ;');
                     this.menuIconContainer.setAttribute('aria-label', 'Preset Menu Button');
                     this.menuIconContainer.setAttribute('role', 'menu');
                     if (this.presetMenu) {
@@ -186,7 +194,7 @@ export default {
                     calendar.classList.add('grid-container');
                     // close calendar icon
                     let closeCalendarIconContainer = document.createElement('div');
-                    closeCalendarIconContainer.setAttribute('style', 'grid-column-start: 7; grid-column-end: 8; background-color: transparent !important;');
+                    closeCalendarIconContainer.setAttribute('style', 'grid-column-start: 7; grid-column-end: 8; background-color: transparent ;');
                     closeCalendarIconContainer.setAttribute('aria-label', 'Preset Menu Button');
                     closeCalendarIconContainer.setAttribute('role', 'button');
                     let closeCalendarIcon = document.createElement('span');
@@ -675,7 +683,7 @@ export default {
                     }
                     // close preset menu icon
                     let closePresetIconContainer = document.createElement('div');
-                    closePresetIconContainer.setAttribute('style', 'background-color: transparent !important;');
+                    closePresetIconContainer.setAttribute('style', 'background-color: transparent ;');
                     closePresetIconContainer.setAttribute('aria-label', 'Preset Menu Close Button');
                     closePresetIconContainer.setAttribute('role', 'button');
                     let closePresetIcon = document.createElement('span');
@@ -1070,12 +1078,12 @@ export default {
 }
 
 .DatepickerContainer > .grid-container {
-  background-color: var(--Background);
+  background-color: #c0b6a5;
 }
 
 .DatepickerContainer > .monthHeader {
-  background-color: var(--Primary);
-  color: var(--Accent);
+  background-color: #918b7e;
+  color:  #000000;
 }
 
 b {
@@ -1092,20 +1100,14 @@ b {
   width: 33%;
   height: auto;
   margin: 0 auto;
-  box-shadow: 0 4px 8px 0 var(--Shadow), 0 6px 20px 0 var(--Shadow);
-  background-color: var(--Background) !important;
-  -webkit-animation-name: menuanimatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: menuanimatetop;
-  animation-duration: 0.4s;
+  background-color: #c0b6a5 ;
 }
 
 .presetMenuContainer > ul {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  list-style-type: none;
-  list-style: none;
+  
 }
 .presetMenuContainer > ul li {
   width: 70%;
@@ -1113,75 +1115,69 @@ b {
   height: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: var(--Primary);
-  color: var(--Accent);
+  background-color:#918b7e;
+  color: #000000;
   border-radius: 5px;
 }
 .presetMenuContainer > ul li:hover,
 li:active {
-  cursor: pointer;
-  box-shadow: 0px 20px 70px 1px var(--Shadow);
   opacity: 0.85;
 }
 
 .calendarHamburger {
   position: relative;
-  display: inline-block;
+  display: flex;
   width: 1.25em;
   height: 0.8em;
   margin-right: 0.3em;
-  border-top: 0.2em solid var(--Primary);
-  border-bottom: 0.2em solid var(--Primary);
-  align-self: left;
+  align-self: center;
 }
 
 .calendarHamburger:hover {
-  cursor: pointer;
-  font-size: 2rem;
+  
+  font-size: 24px;
   opacity: 0.7;
 }
 
 .calendarHamburger::before {
-  content: "";
   position: absolute;
   top: 0.3em;
   left: 0px;
   width: 100%;
-  border-top: 0.2em solid var(--Primary);
 }
 
 .close-calendar-button:hover {
-  cursor: pointer;
+  
   opacity: 0.85;
-  font-size: 2rem;
+  font-size: 24px;
 }
 
 .leftArrow,
 .rightArrow {
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--Primary) !important;
+  font-size: 18px;
+  
+  color: #918b7e ;
 }
 .leftArrow:hover,
 .rightArrow:hover {
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: 24px;
+  
 }
 
 .close-preset-menu {
   position: absolute;
   right: 5px;
   top: 0;
-  color: var(--Primary);
+  color: #918b7e;
   margin: 5px;
 }
 .close-preset-menu:hover {
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: 24px;
+  
 }
 
 .close-calendar-button {
-  color: var(--Primary) !important;
+  color: #918b7e ;
 }
 .grid-container {
   display: grid;
@@ -1190,84 +1186,17 @@ li:active {
   padding: 10px;
   margin: auto;
   position: relative;
-  box-shadow: 0 4px 8px 0 var(--Shadow), 0 6px 20px 0 var(--Shadow);
   border-radius: 5px;
   width: 730px;
   height: 80%;
 }
-/* animations for calendar UI */
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
 
-@-webkit-keyframes menuanimatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 10px;
-    opacity: 1;
-  }
-}
-@keyframes menuanimatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 10px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes animateleft {
-  from {
-    right: 365px;
-    opacity: 0;
-    z-index: -1;
-  }
-  to {
-    right: 780px;
-    opacity: 1;
-    z-index: 1;
-  }
-}
-@keyframes animateleft {
-  from {
-    right: 365px;
-    opacity: 0;
-    z-index: -1;
-  }
-  to {
-    right: 780px;
-    opacity: 1;
-    z-index: 1;
-  }
-}
 .grid-container > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--Primary);
-  color: var(--Accent);
+  background-color: #918b7e;
+  color:  #000000;
   text-align: center;
   font-size: 24px;
   border-radius: 5px;
@@ -1275,38 +1204,28 @@ li:active {
 }
 
 .grid-container > div.active {
-  background-color: var(--Accent);
-  color: var(--Shadow);
-  box-shadow: 0px 20px 70px 1px var(--Shadow);
+  background-color: #000000;
+  color:#e6e8eb;
 }
 
 .grid-container > .day {
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
   padding: 24px;
   height: 48px;
   width: 48px;
   transition: all, 0.1s;
 }
 .grid-container > .leading-trailing-day {
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
   padding: 24px;
   height: 48px;
   width: 48px;
-  color: var(--Primary);
-  background-color: var(--Shadow);
+  color: #918b7e;
+  background-color: #e6e8eb;
   opacity: 0.6;
   transition: all, 0.1s;
 }
 .grid-container > .day.highlighted {
-  background-color: var(--Accent);
-  color: var(--Shadow);
-  box-shadow: 0px 20px 70px 1px var(--Shadow);
+  background-color:  #000000;
+  color: #e6e8eb;
 }
 
 .grid-container > .dayHeader {
@@ -1317,7 +1236,7 @@ li:active {
   padding-right: 24px;
   padding-top: 12px;
   padding-bottom: 12px;
-  color: var(--Accent);
+  color: #000000;
 }
 
 .grid-container > .monthHeader > .leftArrow {
@@ -1344,7 +1263,7 @@ li:active {
 .endDateElement,
 .startTimeElement,
 .endTimeElement {
-  font-size: 1rem !important;
+  font-size: 1rem ;
   font-weight: lighter;
   padding-right: 24px;
   padding-top: 12px;
@@ -1355,8 +1274,8 @@ li:active {
 .endTimeElement,
 .startTimeElement input,
 .endTimeElement input {
-  font-size: 1.54em !important;
-  color: var(--Background);
+  font-size: 1.54em ;
+  color: #c0b6a5;
 }
 .startTimeElement,
 .endTimeElement {
@@ -1369,11 +1288,11 @@ li:active {
 }
 .hour input,
 .minute input {
-  background: var(--Primary) !important;
-  background-image: none !important;
-  border: none !important;
-  background-color: var(--Primary) !important;
-  color: var(--Accent);
+  background: #918b7e ;
+  background-image: none ;
+  border: none ;
+  background-color: #918b7e ;
+  color: #000000;
   width: calc(2em - 4px);
   display: block;
   float: left;
@@ -1381,17 +1300,17 @@ li:active {
   margin-top: 10%;
   clear: both;
   text-align: center;
-  outline: none !important;
+  outline: none ;
 }
 .hour input[type="number"]:focus,
 .hour input[type="number"]:active,
 .minute input[type="number"]:focus,
 .minute input[type="number"]:active {
   width: calc(2em - 4px);
-  border: 2.5px solid var(--Accent) !important;
+  border: 2.5px solid  #000000 ;
   border-radius: 5px;
   padding: 0;
-  outline: 2.5px solid var(--Primary) !important;
+  outline: 2.5px solid #918b7e ;
   margin-top: 10%;
 }
 .hour .ReadOnly:focus,
@@ -1399,72 +1318,59 @@ li:active {
 .minute .ReadOnly:focus,
 .minute .ReadOnly:active {
   width: calc(2em - 4px);
-  border: 2.5px solid var(--Accent) !important;
+  border: 2.5px solid #000000 ;
   padding: 0;
   border-radius: 5px;
-  outline: 2.5px solid var(--Primary) !important;
+  outline: 2.5px solid #918b7e ;
   margin-top: 10%;
 }
-/* Chrome, Safari, Edge, Opera */
-.hour input::-webkit-outer-spin-button,
-.hour input::-webkit-inner-spin-button,
-.minute input::-webkit-outer-spin-button,
-.minute input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-.hour input[type="number"],
-.minute input[type="number"] {
-  -moz-appearance: textfield;
-}
+
 .TimeUpDown {
   margin-left: 5px;
   float: left;
-  color: var(--Background);
+  color: #c0b6a5;
 }
 .TimeUpDown div {
-  cursor: pointer;
-  color: var(--Background);
+  
+  color: #c0b6a5;
 }
 .TimeUpDown div:hover {
   opacity: 0.7;
-  cursor: pointer;
-  box-shadow: 0px 20px 70px 1px var(--Shadow);
+  
 }
 .ampm {
   border-radius: 5px;
-  border: 2px solid var(--Primary);
+  border: 2px solid #918b7e;
 }
 .am,
 .pm {
-  cursor: pointer;
+  
   padding: 2px;
 }
 .am[selected],
 .pm[selected] {
-  background-color: var(--Background);
-  color: var(--Accent);
+  background-color: #c0b6a5;
+  color: #000000;
 }
 .am {
-  border-bottom: 1px solid var(--Primary);
+  border-bottom: 1px solid #918b7e;
 }
 
 /* submit button styling */
 .cancelButton {
-  font-size: 2rem;
-  background-color: var(--Primary);
+  font-size: 24px;
+  background-color: #918b7e;
   text-align: center;
   border-radius: 5px;
   transition: all, 0.1s;
   border-style: none;
-  color: var(--Accent);
+  color:  #000000;
 }
 
 .submitButton {
   font-size: 3rem;
-  background-color: var(--Accent);
-  color: var(--Primary);
+  background-color: #000000;
+  color: #918b7e;
   text-align: center;
   border-radius: 5px;
   transition: all, 0.1s;
@@ -1473,8 +1379,7 @@ li:active {
 
 .submitButton:hover,
 .cancelButton:hover {
-  box-shadow: 0px 20px 70px 1px var(--Shadow);
-  cursor: pointer;
+  
   opacity: 0.85;
 }
 button,
@@ -1485,7 +1390,7 @@ input[type="reset"] {
   border: none;
   padding: 0;
   font: inherit;
-  cursor: pointer;
+  
   outline: inherit;
 }
 
@@ -1497,16 +1402,16 @@ input[type="reset"] {
 .launch {
   float: left;
   border-style: solid;
-  border-color: var(--Accent);
+  border-color:  #000000;
   border-width: 2px;
   border-radius: 5px;
   box-sizing: border-box;
-  color: var(--Accent);
+  color: #000000;
 }
 
 .headingBlock {
   float: left;
-  background-color: var(--Background);
+  background-color:#c0b6a5;
   text-align: right;
   min-width: 100px;
   line-height: 40px;
@@ -1525,7 +1430,7 @@ input[type="reset"] {
   float: left;
   position: absolute;
   text-align: center;
-  color: var(--Primary);
+  color: #918b7e;
   width: 250px;
   line-height: 80px;
   border-radius: 5px;
@@ -1533,20 +1438,19 @@ input[type="reset"] {
 
 .launch:hover > .launchButton {
   display: block;
-  cursor: pointer;
+  
 }
 .launch:hover > .timeBlock {
-  cursor: pointer;
+  
   opacity: 0.2;
 }
 .launch:hover > .headingBlock {
-  cursor: pointer;
+  
   opacity: 0.2;
 }
 
 .day:hover {
-  cursor: pointer;
+  
   opacity: 0.85;
-  box-shadow: 0px 20px 70px 1px var(--Secondary);
 }
 </style>
